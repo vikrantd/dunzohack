@@ -27,19 +27,11 @@ export class ApplicationEffects {
                 return Observable.concat(
                     Observable.of({type: a.SET_LIST_LOADING, payload: true}),
                     this._apiSvc
-                            .get('Categories/', true)
+                            .get('products/search/' + pAction.payload, true)
                             .switchMap((result1: any) => { 
-                                return this._apiSvc
-                                    .get('Sub-categories/', true)
-                                        .switchMap((result2: any) => { 
-                                            return Observable.concat(
-                                                Observable.of({type: a.DATA_FOR_SEARCH_FETCHED, payload: {parentData: result1, childData: result2, term: pAction.payload}})
-                                            );
-                                        }).catch((e: Error) => {
-                                            let message: string = e.message == "" ? "Error" : e.message;
-                                            this._alertService.error(message, true);
-                                            return error(e)}
-                                        )
+                                return Observable.concat(
+                                    Observable.of({type: a.DATA_FOR_SEARCH_FETCHED, payload: {parentData: result1, childData: null, term: pAction.payload}})
+                                );
                             }).catch((e: Error) => {
                                 let message: string = e.message == "" ? "Error" : e.message;
                                 this._alertService.error(message, true);

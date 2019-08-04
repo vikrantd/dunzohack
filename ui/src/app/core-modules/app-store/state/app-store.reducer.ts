@@ -85,25 +85,7 @@ export function handleModalState(state: IAppStoreState, action: IAction): IAppSt
 
 export function handleDataForSearchFetched(state: IAppStoreState, action: IAction): IAppStoreState {
     let newState = _.cloneDeep(state);
-    let searchResult: any[] = [];
-    let parentCategories = _.cloneDeep(action.payload.parentData);
-    let childCategories = _.cloneDeep(action.payload.childData);
-    parentCategories.forEach(category => {
-        Object.keys(category).forEach(function(key) {
-            if (category[key].toString().toLowerCase() == action.payload.term.toLowerCase()) {
-                searchResult.push(category);
-            }
-        });
-    });
-    childCategories.forEach(subCategory => {
-        Object.keys(subCategory).forEach(function(key) {
-            if (subCategory[key].toString().toLowerCase() == action.payload.term.toLowerCase()) {
-                subCategory['parentType'] = subCategory['parent-type'];
-                searchResult.push(subCategory);
-            }
-        });
-    });
-    newState.searchResults = searchResult;
+    newState.searchResults = action.payload.parentData;
     newState.searchTerm = action.payload.term;
     newState.routerUrl = "searchResults";
     return newState;

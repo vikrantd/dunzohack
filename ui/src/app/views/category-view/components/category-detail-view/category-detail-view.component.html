@@ -1,10 +1,10 @@
 <div class="category-detailed-view">
     <div class="selected-category-operations">
         <h4 class="selected-category-name" *ngIf="selectedCategory?.name">List of all sub-categories of {{selectedCategory?.name}}</h4>
-        <span class="category-operation-button" (click)="hideView()"><img src="assets/cancel-button.svg"></span>
+        <!-- <span class="category-operation-button" (click)="hideView()"><img src="assets/cancel-button.svg"></span>
         <span class="category-operation-button" (click)="deleteSubCategory({}, false)" data-toggle="modal" data-target="#myModal"><img src="assets/delete.svg"></span>
         <span class="category-operation-button" (click)="editCategory()"><img src="assets/edit.svg"></span>
-        <span class="category-operation-button" (click)="addSubCategory()"><img src="assets/add.svg"></span>
+        <span class="category-operation-button" (click)="addSubCategory()"><img src="assets/add.svg"></span> -->
     </div>
     <div class="sub-category-highlights" (scroll)="onScroll($event)" *ngIf="!loading">
             <div class="sub-category-option" (click)="selectCategory(subCategory)" *ngFor="let subCategory of subCategoriesList" data-toggle="modal" data-target="#myModal">

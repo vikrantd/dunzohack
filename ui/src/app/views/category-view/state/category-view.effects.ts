@@ -113,7 +113,7 @@ export class CategoryViewEffects {
         .withLatestFrom(this.store, (action, state) => ({state: state, action: action}))
         .mergeMap((pAction: IStateAction) => {
                 return this._apiSvc
-                        .post('Sub-categories/', pAction.action.payload, true)
+                        .get('products/search/' + pAction.action.payload, true)
                         .switchMap((result: any) => {
                             this._alertService.success("Sub-category Saved Successfully", true);
                             return Observable.concat(

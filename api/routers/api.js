@@ -135,7 +135,7 @@ module.exports = (express, connection) => {
 	                console.error(err);
 	                res.sendStatus(404);
 	            }else{
-					var productQuery = connection.query('SELECT * FROM products WHERE storeId=?', [req.params.id], (err, productRows, fields) => {
+					var productQuery = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.productId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId WHERE p.storeId=?', [req.params.id], (err, productRows, fields) => {
 						if(rows.length){
 							let response = {store: rows[0], products: productRows}
 							res.jsonp(response);
@@ -257,7 +257,7 @@ module.exports = (express, connection) => {
 					res.jsonp(rows);
 				}else{
 					//ID NOT FOUND
-					res.sendStatus(404);
+					res.jsonp([]);
 				}
 			}
 		});

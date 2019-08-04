@@ -40,7 +40,7 @@
     .sub-category-highlights {
 
         background: #f8f9fa;
-        height: 90.1%;
+        height: calc(100% - 33px);
         overflow: auto;
 
         .sub-category-highlight-text {
