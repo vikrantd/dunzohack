@@ -136,7 +136,7 @@ module.exports = (express, connection) => {
 	                console.error(err);
 	                res.sendStatus(404);
 	            }else{
-					var productQuery = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.productId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId WHERE p.storeId=?', [req.params.id], (err, productRows, fields) => {
+					var productQuery = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.categoryId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId WHERE p.storeId=?', [req.params.id], (err, productRows, fields) => {
 						if(rows.length){
 							let response = {store: rows[0], products: productRows}
 							res.jsonp(response);
@@ -207,7 +207,7 @@ module.exports = (express, connection) => {
 	router.route('/products')
 
 	.get((req, res) => {
-		var query = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.productId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId', (err, rows, fields) => {
+		var query = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.categoryId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId', (err, rows, fields) => {
 			if (err) {
 				//INVALID
 				console.error(err);
@@ -245,7 +245,7 @@ module.exports = (express, connection) => {
 
 	.get((req, res) => {
 		var query = connection.query("SELECT s.storeName, s.storeAddress, p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p \
-		LEFT JOIN categories c ON c.categoryId = p.productId \
+		LEFT JOIN categories c ON c.categoryId = p.categoryId \
 		LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId \
 		LEFT JOIN stores s on s.storeId = p.storeId \
 		WHERE p.correctedName like '%"+req.params.query + "%' ", (err, rows, fields) => {
