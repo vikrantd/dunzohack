@@ -83,8 +83,9 @@ module.exports = (express, connection) => {
 	                console.error(err);
 	                res.sendStatus(404);
 	            }else{
-	                res.status(201);
-	                res.location('/api/panoramas/' + result.insertId);
+					let response = {};
+					response.storeId = result.insertId;
+					res.jsonp(response);
 	                res.end();
 	            }
 	        });
