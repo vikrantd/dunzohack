@@ -91,7 +91,7 @@
             }
 
             .analysed-box {
-                height: 500px;
+                height: 540px;
                 padding: 10px;
 
                 .analysed-image {
@@ -153,29 +153,40 @@
                             }
                         }
 
-                        .product-data-table {
-                            padding: 10px;
-                            border: solid 1px #d6d2d2;
+                        .product-table {
 
-                            .item-box {
-                                border: solid 1px #01c18b;
-                                padding: 5px;
-                                border-radius: 5px;
-                                width: 35%;
+                            .product-data-table {
+                                padding: 10px;
+                                border: solid 1px #d6d2d2;
+    
+                                .item-box {
+                                    border: solid 1px #01c18b;
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    width: 35%;
+                                }
+    
+                                .quantity-box {
+                                    border: solid 1px #01c18b;
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    width: 30%;
+                                }
+    
+                                .price-box {
+                                    border: solid 1px #01c18b;
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    width: 33%;
+                                }
                             }
+                        }
 
-                            .quantity-box {
-                                border: solid 1px #01c18b;
-                                padding: 5px;
-                                border-radius: 5px;
-                                width: 30%;
-                            }
+                        .button-operations {
+                            margin-top: 50px;
 
-                            .price-box {
-                                border: solid 1px #01c18b;
-                                padding: 5px;
-                                border-radius: 5px;
-                                width: 33%;
+                            button {
+                                padding: 10px 15px;
                             }
                         }
                     }

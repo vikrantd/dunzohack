@@ -97,11 +97,7 @@ export class AnalyseViewEffects {
                             return Observable.concat(
                                 Observable.of({type: a.SAVED_TO_INVENTORY, payload: true})
                             );
-                        }).catch((e: Error) => {
-                            let message: string = e.message == "" ? "Error" : e.message;
-                            this._alertService.error(message, true);
-                            return error(e)}
-                        )
+                        })
         });
 
     

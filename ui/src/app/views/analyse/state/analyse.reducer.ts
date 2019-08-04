@@ -53,18 +53,10 @@ function handleImageListFetched(state: IAnalyseViewState, action: IAction): IAna
 
 function hanldeAnalysedData(state: IAnalyseViewState, action: IAction): IAnalyseViewState {
     let newState = _.cloneDeep(state);
-   
-    let productArray: any[] = [];
-    let topText: string = "";
     let topTextArray: any[] = [];
-   
-    // console.log(action.payload.responses);
-    // console.log(action.payload.responses[0].textAnnotations[0].description);
     topTextArray = extractBillHeaderData(action.payload.responses[0].textAnnotations[0].description);
     newState.analysedDataHeader = assignExtractedHeaderDetails(topTextArray);
-    // console.log(topTextArray);
     newState.productArray = createTabularItemData(action.payload.responses[0].textAnnotations);
-    // console.log(text);
     return newState;
 }
 

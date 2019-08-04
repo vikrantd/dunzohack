@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand absolute"><span class="fa fa-heart text-primary"><img src="assets/dunzo-logo-2.png" id="icon" alt="Company Icon" /></span>  </a>
+          <a class="navbar-brand absolute"><span class="fa fa-heart text-primary"><img (click)="home()" src="assets/dunzo-logo-2.png" id="icon" alt="Company Icon" /></span>  </a>
         </div>
         <div class="search-bar"><input [(ngModel)]="searchInput" type=text placeholder="Search for stores and products" class="search-field" (keyup.enter)="search(searchInput)"/><span class="search-icon" (click)="search(searchInput)"><img src="assets/search.svg"></span></div>
         <span class="user-name">{{userName}}</span>

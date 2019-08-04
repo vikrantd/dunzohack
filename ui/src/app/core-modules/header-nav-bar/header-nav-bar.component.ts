@@ -39,6 +39,10 @@ export class HeaderNavBarComponent implements OnInit {
       this._appSvc.dResetStore();
   }
 
+  home() {
+    this._appSvc.dSetRouterUrl('home');
+  }
+
   ngOnDestroy() {
     this.ngUnsubscriber.next();
     this.ngUnsubscriber.complete();

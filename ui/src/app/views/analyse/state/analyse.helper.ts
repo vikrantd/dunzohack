@@ -40,14 +40,12 @@ export function createTabularItemData(pData) {
             if(pullFlag) {
                 productArray.push(_.cloneDeep(sameRowText));
             }
-            console.log(sameRowText);
             sameRowText.forEach(singleton => {
                 finalRow.push(singleton);
             });
             sameRowText = [];
         }
     });
-    console.log(productArray);
     productArray.forEach((product, index) => {
         let productData: any = {
             itemName: "",
@@ -67,13 +65,11 @@ export function createTabularItemData(pData) {
                 }
             })
         }
-        console.log(itemIndex, quantityIndex, priceIndex);
         if(index != 0) {
             let stopAddingfString: boolean = false;
             let itemCountRecieved: boolean = false;
             let itemPriceReceived: boolean = false;
             let itemCount: any;
-            // let itemPrice: any;
             product.forEach(productDetail => {
                 if(!isNaN(productDetail.description)) {
                     stopAddingfString = true;
@@ -94,8 +90,7 @@ export function createTabularItemData(pData) {
             });
             finalProductArray.push(productData);
         }
-    })
-    console.log(finalProductArray);
+    });
     return finalProductArray;
 }
 
@@ -115,7 +110,6 @@ export function extractBillHeaderData(pData) {
 
 export function assignExtractedHeaderDetails(pData) {
     let finalData: any = {};
-    let phoneRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
     finalData.address = "";
     pData.forEach(analysedHeaderData => {
         if(analysedHeaderData.toLowerCase().indexOf('pvt ltd') !== -1 || analysedHeaderData.indexOf('foods') !== -1 || analysedHeaderData.toLowerCase().indexOf('hotel') !== -1) {
@@ -142,10 +136,6 @@ export function assignExtractedHeaderDetails(pData) {
                     count++;
                 }
             });
-            if(count > 2) {
-                // console.log(splitData);
-            }
-            
         }
     });
     if(finalData.establishment == undefined && pData[0] != "")  {
@@ -164,7 +154,6 @@ export function buildAddStoreData(pData) {
 }
 
 export function buildAddProductData(pData) {
-    // pData.productDetails.forEach(detail => {
         let productData = {
             "storeId": pData.id,
             "guessedName": pData.productDetails.itemName,
@@ -174,7 +163,6 @@ export function buildAddProductData(pData) {
             "quantityTypeId": 1
 
         };
-    // })
     return productData;
 }
 

@@ -1,5 +1,5 @@
 <div class="categories-list-view">
-        <div class="categories-header"><h4>Receipts</h4><span (click)="addCategory()" class="add-icon"><img src="assets/add.svg"></span></div>
+        <div class="categories-header"><h4>Receipts</h4></div>
         <div class="categories-list" *ngIf="!loading">
             <li *ngFor="let image of imageList" (click)="selectImage(image)" [ngClass]="{'active': image.storeRecieptId == selectedImage?.storeRecieptId}">
                 <span class="category-name"><img src="{{image.recieptImage}}"></span><button (click)="analyseImage(image.recieptImage)">Analyse</button>
@@ -33,11 +33,14 @@
                                     <div class="product-detail-table">
                                         <span class="items-header">Items</span><span class="quantity-header">Quantity</span><span class="price-header">Price</span>
                                     </div>
-                                    <div *ngFor="let product of productArray;let i=index" class="product-data-table">
+                                    <div class="product-table">
+                                      <div *ngFor="let product of productArray;let i=index" class="product-data-table">
                                         <input class="item-box" type="text" name="itemName{i}" placeholder="Item name" [(ngModel)]="product.itemName">
                                         <input class="quantity-box" type="text" name="quantity{i}" placeholder="Quantity" [(ngModel)]="product.quantity">
                                         <input class="price-box" type="text" name="price{i}" placeholder="Price" [(ngModel)]="product.price">
+                                      </div>
                                     </div>
+                                   
                                     <!-- <div class="id-field-box">
                                       <label>Category Id</label>
                                       <input class="" type="text" name="categoryId" placeholder="CategoryId" [(ngModel)]="newSubCategory.categoryId" #categoryId="ngModel" disabled/>
