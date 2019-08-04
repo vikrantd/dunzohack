@@ -26,14 +26,11 @@ export class UserEffects {
     eLoginUser = this.action$
         .ofType('[User] LOGIN_USER')
         .switchMap((pAction: IAction) => {
-                return this._apiSvc
-                        .post('Users/login',  pAction.payload, true)
-                        .switchMap((result: any) => {
-                            localStorage.setItem('currentUser', JSON.stringify(pAction.payload.email));
-                            localStorage.setItem('currentUserToken', JSON.stringify(result.id));
+                return Observable.of({})
+                        .switchMap(() => {
                             return Observable.concat(
-                                Observable.of({type: a.USER_VALIDATED, payload: {userData: pAction.payload, responseData: result}}),
-                                Observable.of({type: a.GET_USER_DETAILS, payload: {id: result.userId, token: result.id}})
+                                Observable.of({type: a.USER_VALIDATED, payload: {userData: pAction.payload, responseData: ''}}),
+                                Observable.of({type: a.USER_DETAILS_FETCHED, payload: {name:'ATeam'}})
                             );
                         }).catch((e: Error) => {
                             let message: string = e.message == "" ? "Incorrect Credentials" : e.message;

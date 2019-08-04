@@ -2,8 +2,6 @@
     width: 12%;
     background: #141e2f;
     height: 90%;
-    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
     display: inline-block;
     position: absolute;
     top: 80px;
@@ -14,6 +12,7 @@
             padding: 14px;
             border-bottom: solid 1px #cacaca;
             cursor: pointer;
+            padding-left: 5px;
 
             .nav-name {
                 color: #04f6a3;
@@ -33,13 +32,14 @@
             }
 
             &:hover {
-                box-shadow: 0px 0px 15px white;
-                margin-top: 1px;
+                border-left: 5px solid white;
+                padding-left: 0;
             }
         }
 
         .active {
-            box-shadow: 0px 0px 10px 2px white;
+            border-left: 5px solid white;
+            padding-left: 0;
         }
     }
 }

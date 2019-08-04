@@ -206,7 +206,7 @@ module.exports = (express, connection) => {
 	router.route('/products')
 
 	.get((req, res) => {
-		var query = connection.query('SELECT * FROM products', (err, rows, fields) => {
+		var query = connection.query('SELECT p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p LEFT JOIN categories c ON c.categoryId = p.productId LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId', (err, rows, fields) => {
 			if (err) {
 				//INVALID
 				console.error(err);
@@ -235,6 +235,88 @@ module.exports = (express, connection) => {
 				res.status(201);
 				res.location('/api/products/' + result.insertId);
 				res.end();
+			}
+		});
+		console.log(query.sql);
+	})
+
+	router.route('/products/search/:query')
+
+	.get((req, res) => {
+		var query = connection.query("SELECT s.storeName, s.storeAddress, p.productId, p.storeId, p.perUnitPrice, p.guessedName, p.correctedName, p.categoryId, c.categoryName as category, q.quantityType  FROM products p \
+		LEFT JOIN categories c ON c.categoryId = p.productId \
+		LEFT JOIN quantityTypes q on q.quantityTypeId = p.quantityTypeId \
+		LEFT JOIN stores s on s.storeId = p.storeId \
+		WHERE p.correctedName like '%"+req.params.query + "%' ", (err, rows, fields) => {
+			if (err) {
+				//INVALID
+				console.error(err);
+				res.sendStatus(404);
+			}else{
+				if(rows.length){
+					res.jsonp(rows);
+				}else{
+					//ID NOT FOUND
+					res.sendStatus(404);
+				}
+			}
+		});
+		console.log(query.sql);
+	})
+
+
+	router.route('/categories')
+
+	.get((req, res) => {
+		var query = connection.query('SELECT * FROM categories', (err, rows, fields) => {
+			if (err) {
+				//INVALID
+				console.error(err);
+				res.sendStatus(400);
+			}else{
+				if(rows.length){
+					res.jsonp(rows);
+				}else{
+					//ID NOT FOUND
+					res.sendStatus(400);
+				}
+			}
+		});
+		console.log(query.sql);
+	})
+
+	//we can use .route to then hook on multiple verbs
+	.post((req, res) => {
+		var data = req.body; // maybe more carefully assemble this data
+		console.log(req.body)
+		var query = connection.query('INSERT INTO categories SET ?', [data], (err, result) => {
+			if(err){
+				console.error(err);
+				res.sendStatus(404);
+			}else{
+				res.status(201);
+				res.location('/api/categories/' + result.insertId);
+				res.end();
+			}
+		});
+		console.log(query.sql);
+	})
+
+	router.route('/quantityTypes')
+
+	.get((req, res) => {
+		var query = connection.query('SELECT * FROM quantityTypes', (err, rows, fields) => {
+			if (err) {
+				//INVALID
+				console.error(err);
+				res.sendStatus(400);
+			}else{
+				if(rows.length){
+					res.jsonp(rows);
+				}else{
+					//ID NOT FOUND
+					res.sendStatus(400);
+				}
 			}
 		});
 		console.log(query.sql);

@@ -1,5 +1,5 @@
 <div class="categories-list-view" [ngClass]="{'squeeze-view': selectedCategory?.storeId || addCategoryFlag || editCategoryFlag}">
-    <div class="categories-header"><h4>Stores</h4><span (click)="addCategory()" class="add-icon"><img src="assets/add.svg"></span></div>
+    <div class="categories-header"><h4>Stores</h4></div>
     <div class="categories-list" *ngIf="!loading">
         <li *ngFor="let category of categoriesList" (click)="selectCategory(category)" [ngClass]="{'active': category.storeId == selectedCategory?.storeId}">
             <span class="category-name">{{category.storeName}}</span><span class="caret"><img src="assets/move-to-next.svg"></span>

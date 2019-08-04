@@ -1,5 +1,5 @@
 <div class="categories-list-view">
-        <div class="categories-header"><h4>Receipts</h4><span (click)="addCategory()" class="add-icon"><img src="assets/add.svg"></span></div>
+        <div class="categories-header"><h4>Receipts</h4></div>
         <div class="categories-list" *ngIf="!loading">
             <li *ngFor="let image of imageList" (click)="selectImage(image)" [ngClass]="{'active': image.storeRecieptId == selectedImage?.storeRecieptId}">
                 <span class="category-name"><img src="{{image.recieptImage}}">{{image.recieptImage}}</span><button (click)="analyseImage(image.recieptImage)">Analyse</button>

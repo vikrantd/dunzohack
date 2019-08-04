@@ -19,7 +19,7 @@ export class HeaderNavBarComponent implements OnInit {
 
   constructor(private _router: Router,
     private _appSvc: AppStoreService) { 
-    this.userName = localStorage.getItem('userName');
+    this.userName = 'ATeam';
     if(this.userName !== null) this.userName = this.userName.replace(/^"(.*)"$/, '$1');;
   }
  

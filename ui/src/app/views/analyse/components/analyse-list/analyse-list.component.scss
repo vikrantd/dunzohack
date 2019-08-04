@@ -42,6 +42,9 @@
     }
 
     .categories-list {
+        height: calc(100% - 60px);
+        overflow-y: scroll;
+        
         li {
             display: block;
             padding: 14px;
