@@ -35,9 +35,9 @@
                                     </div>
                                     <div class="product-table">
                                       <div *ngFor="let product of productArray;let i=index" class="product-data-table">
-                                        <input class="item-box" type="text" name="itemName{i}" placeholder="Item name" [(ngModel)]="product.itemName">
-                                        <input class="quantity-box" type="text" name="quantity{i}" placeholder="Quantity" [(ngModel)]="product.quantity">
-                                        <input class="price-box" type="text" name="price{i}" placeholder="Price" [(ngModel)]="product.price">
+                                        <input class="item-box" type="text" name="itemName{{i}}" placeholder="Item name" [(ngModel)]="product.itemName">
+                                        <input class="quantity-box" type="text" name="quantity{{i}}" placeholder="Quantity" [(ngModel)]="product.quantity">
+                                        <input class="price-box" type="text" name="price{{i}}" placeholder="Price" [(ngModel)]="product.price">
                                       </div>
                                     </div>
                                    

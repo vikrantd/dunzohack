@@ -16,12 +16,12 @@ export function createTabularItemData(pData) {
     })
     lastveritcePoint = pData[0].boundingPoly.vertices[0].y;
     pData.forEach((data) => {
-        if(data.locale == undefined && !data['used']) {
+        if(data.locale == undefined && !data.used) {
             lastveritcePoint = data.boundingPoly.vertices[0].y;
             pData.forEach(insideLoopData => {
                 if(insideLoopData.locale == undefined) {
-                    if(insideLoopData.boundingPoly.vertices[0].y > lastveritcePoint-15 && insideLoopData.boundingPoly.vertices[0].y < lastveritcePoint+15) {
-                        insideLoopData['used'] = true;
+                    if(insideLoopData.boundingPoly.vertices[0].y > (lastveritcePoint-15) && insideLoopData.boundingPoly.vertices[0].y < (lastveritcePoint+15)) {
+                        insideLoopData.used = true;
                         sameRowText.push(insideLoopData);
                         if(insideLoopData.description.toLowerCase().indexOf('item') != -1 || insideLoopData.description.toLowerCase().indexOf('quantity') != -1 || insideLoopData.description.toLowerCase().indexOf('price') != -1 || insideLoopData.description.toLowerCase().indexOf('amount') != -1) {
                             pullFlag = true;
@@ -30,6 +30,7 @@ export function createTabularItemData(pData) {
                             pullFlag = false;
                         }
                     }
+                    
                 }
             });
             if(sameRowText.length > 1) {
@@ -40,9 +41,10 @@ export function createTabularItemData(pData) {
             if(pullFlag) {
                 productArray.push(_.cloneDeep(sameRowText));
             }
-            sameRowText.forEach(singleton => {
-                finalRow.push(singleton);
-            });
+            // sameRowText.forEach(singleton => {
+            //     finalRow.push(singleton);
+            // });
+            // console.log(finalRow);
             sameRowText = [];
         }
     });
