@@ -1,0 +1,6 @@
+<div id="flash" *ngIf="message" 
+    [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }" 
+    (click)="dismiss($event)">
+    <span class="msg">{{message.text}}</span>
+    <span (click)="dismiss($event)"><img class="alert-cancel" src="assets/cancel.svg" id="icon"/></span>
+</div>

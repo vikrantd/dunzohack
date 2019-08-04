@@ -1,0 +1,45 @@
+.nav-bar-view {
+    width: 12%;
+    background: #141e2f;
+    height: 90%;
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    display: inline-block;
+    position: absolute;
+    top: 80px;
+
+    .nav-bar-list {
+        li {
+            display: block;
+            padding: 14px;
+            border-bottom: solid 1px #cacaca;
+            cursor: pointer;
+
+            .nav-name {
+                color: #04f6a3;
+                font-size: 18px;
+                font-weight: 500;
+                margin-left: 10px;
+            }
+
+            .nav-icon {
+                img {
+                    width: 17px;
+                    float: right;
+                    display: inline-block;
+                    margin-top: 6px;
+                    margin-right: 5px;
+                }
+            }
+
+            &:hover {
+                box-shadow: 0px 0px 15px white;
+                margin-top: 1px;
+            }
+        }
+
+        .active {
+            box-shadow: 0px 0px 10px 2px white;
+        }
+    }
+}

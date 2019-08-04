@@ -1,0 +1,168 @@
+.add-category-view {
+    display: inline-block;
+    height: 84.5%;
+    width: 65.5%;
+    position: absolute;
+    right: 0.7%;
+    overflow: auto;
+    overflow-x: hidden;
+    top: 90px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    background: white;
+
+    .add-category-heading {
+        height: 60px;
+        background: #00c7e9;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+        width: 100.2%;
+
+        .add-category-text {
+            color: white;
+            font-size: 24px;
+            margin: 15px 15px;
+            display: inline-block;
+        }
+
+        .nav-bars {
+            display: inline-block;
+            float: right;
+            margin-right: 14px;
+            margin-top: 16px;
+
+            span {
+                display: inline-block;
+                color: #efefef;
+
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            } 
+
+            .active {
+                color: white;
+                font-weight: 500;
+                
+                &:hover {
+                    text-decoration: none;
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .add-form {
+        form {
+            .top-box {
+                margin-top:35px;
+
+                .input-field-box {
+                    display: inline-block;
+                    width: 45%;
+                    margin-left: 30px;
+
+                    label {
+                        display: block;
+                        color: #999999;
+                        margin-bottom: 5px;
+                        font-weight: 500;
+                    }
+
+                    input {
+                        width: 100%;
+                        border-radius: 5px;
+                        border: solid 2px #e4e4e4;
+                        padding: 6px;
+
+                        &:focus {
+                            border: solid 1px #8eeeff;
+                            box-shadow: 0px 0px 5px 1px #00c7e9;
+                            outline: transparent;
+                        }
+                    }
+
+                    span {
+                        position: absolute;
+                    }
+
+                }
+            }
+
+            .description-field-box {
+                margin-left: 30px;
+                margin-top: 35px;
+
+                label {
+                    display: block;
+                    color: #999999;
+                    margin-bottom: 5px;
+                    font-weight: 500;
+                }
+
+                textarea {
+                    width: 97%;
+                    border-radius: 5px;
+                    border: solid 2px #e4e4e4;
+                    padding: 6px;
+
+                    &:focus {
+                        border: solid 1px #8eeeff;
+                        box-shadow: 0px 0px 5px 1px #00c7e9;
+                        outline: transparent;
+                    }
+                }
+
+                input {
+                    border-radius: 5px;
+                    border: solid 2px #e4e4e4;
+                    padding: 6px;
+                    width: 15%;
+
+                    &:focus {
+                        border: solid 1px #8eeeff;
+                        box-shadow: 0px 0px 5px 1px #00c7e9;
+                        outline: transparent;
+                    }
+                }
+            }
+
+            .button-operations {
+                float: right;
+                display: inline-block;
+                margin-top: 70px;
+
+                .cancel-button {
+                    outline: transparent;
+                    padding: 15px 30px;
+                    color: #999999;
+                    background: white;
+                    border: solid 2px #e4e4e4;
+                    margin: 10px 15px;
+                    border-radius: 5px;
+
+                    &:hover {
+                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.16);
+                        cursor: pointer;
+                    }
+                }
+
+                .save-button {
+                    outline: transparent;
+                    padding: 15px 35px;
+                    color: white;
+                    background: #00c7e9;
+                    border: solid 2px #00c7e9;
+                    margin: 10px 15px;
+                    border-radius: 5px;
+
+                    &:hover {
+                        box-shadow: 0px 0px 5px 1px #00c7e9;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

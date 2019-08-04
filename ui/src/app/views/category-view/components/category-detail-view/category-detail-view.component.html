@@ -1,0 +1,44 @@
+<div class="category-detailed-view">
+    <div class="selected-category-operations">
+        <h4 class="selected-category-name" *ngIf="selectedCategory?.name">List of all sub-categories of {{selectedCategory?.name}}</h4>
+        <span class="category-operation-button" (click)="hideView()"><img src="assets/cancel-button.svg"></span>
+        <span class="category-operation-button" (click)="deleteSubCategory({}, false)" data-toggle="modal" data-target="#myModal"><img src="assets/delete.svg"></span>
+        <span class="category-operation-button" (click)="editCategory()"><img src="assets/edit.svg"></span>
+        <span class="category-operation-button" (click)="addSubCategory()"><img src="assets/add.svg"></span>
+    </div>
+    <div class="sub-category-highlights" (scroll)="onScroll($event)" *ngIf="!loading">
+            <div class="sub-category-option" (click)="selectCategory(subCategory)" *ngFor="let subCategory of subCategoriesList" data-toggle="modal" data-target="#myModal">
+                <!-- <span class="sub-category-delete" (click)="deleteSubCategory(subCategory, true)" data-toggle="modal" data-target="#myModal"><img src="assets/delete-blue.svg"></span> -->
+                <img class="sub-category-icon" src="assets/{{subCategory.name.toLowerCase()}}.svg" onerror="this.src='assets/sub-category.svg'">
+                <span class="sub-category-name">{{subCategory.name}}</span>
+            </div>
+        <div class="no-result-div" *ngIf="subCategoriesList.length == 0"> No Sub-Categories in this Category</div>
+    </div>
+    <div class="loader" *ngIf="loading"></div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Category Products</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <button class="first-button" (click)="deleteCategory()" data-dismiss="modal">Yes</button>
+                <button data-dismiss="modal">No</button> -->
+                <div class="rate-list-header">
+                  <span>Item</span>
+                  <span class="rate">Rate(Rs)</span>
+                </div>
+                <div class="rate-list" *ngFor="let product of selectedDepartment?.products">
+                  <span>{{product.correctedName}}</span>
+                  <span class="rate">{{product.perUnitPrice}}</span>
+                </div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+</div>

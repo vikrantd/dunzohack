@@ -1,0 +1,43 @@
+<div class="add-category-view">
+    <div class="add-category-heading">
+        <h4 class="add-category-text">{{title}}</h4>
+        <div class="nav-bars" *ngIf="editState">
+                    <span (click)="breadcrumbNav(true)">Categories</span> <span>></span>
+                    <span (click)="breadcrumbNav(false)">Category View</span> <span>></span>
+                    <span class="active">Edit Category</span>
+        </div>
+    </div>
+    <div class="add-form">
+        <div></div>
+            <form name="form" (ngSubmit)="f.form.valid && saveCategory()" #f="ngForm" novalidate>
+                    <div class="top-box">
+                      <div class="input-field-box">
+                        <label>Name</label>
+                        <input class="input-field" type="text" name="name" placeholder="Name" [(ngModel)]="newCategory.name" #name="ngModel"
+                          required />
+                        <span class="error-message" *ngIf="f.submitted && !name.valid">Name is required!</span>
+                      </div>
+                      <div class="input-field-box">
+                        <label>Type</label>
+                        <input class="input-field" type="text" name="type" placeholder="Type" [(ngModel)]="newCategory.type" #type="ngModel" required/>
+                        <span class="error-message" *ngIf="f.submitted && !type.valid">Type is required!</span>
+                      </div>
+                    </div>
+                    <div class="description-field-box">
+                      <label>Description</label>
+                      <textarea class="" type="text" name="description" placeholder="Description" [(ngModel)]="newCategory.description" #description="ngModel" required></textarea>
+                      <span class="error-message" *ngIf="f.submitted && !description.valid">Description is required!</span>
+                    </div>
+                    <div class="description-field-box">
+                      <label>Id</label>
+                      <input class="" type="text" name="id" placeholder="Id" [(ngModel)]="newCategory.id" #id="ngModel" required/>
+                      <span class="error-message" *ngIf="f.submitted && !id.valid">Id is required!</span>
+                    </div>
+                    <div class="button-operations">
+                        <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+                        <button type="submit" *ngIf="!editState" class="save-button">Save</button>
+                        <button type="submit" *ngIf="editState" class="save-button">Edit</button>
+                    </div>
+                  </form>
+    </div>
+</div>

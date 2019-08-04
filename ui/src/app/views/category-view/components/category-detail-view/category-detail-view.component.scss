@@ -1,0 +1,179 @@
+.category-detailed-view {
+    display: inline-block;
+    height: 84.5%;
+    width: 65.4%;
+    position: absolute;
+    right: 0.7%;
+    top: 90px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+
+    .selected-category-operations {
+        height: 60px;
+        background: #01c18b;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+        width: 100.2%;
+
+        .selected-category-name {
+            color: white;
+            font-size: 24px;
+            margin: 15px 15px;
+            display: inline-block;
+        }
+
+        .category-operation-button {
+            float: right;
+            display: inline-block;
+            margin-top: 13px;
+            margin-right: 30px;
+            cursor: pointer;
+
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .sub-category-highlights {
+
+        background: #f8f9fa;
+        height: 90.1%;
+        overflow: auto;
+
+        .sub-category-highlight-text {
+            display: block;
+            color: #999999;
+            padding-top: 12px;
+            margin-left: 16px;
+        }
+
+        .sub-category-option {
+            display: inline-block;
+            height: 225px;
+            width: 30%;
+            border-radius: 25px;
+            border: solid 1px rgba(0, 0, 0, 0.16);
+            margin: 5% 1.6%;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+
+            .sub-category-delete {
+                img {
+                    display: none;
+                }
+            }
+
+            .sub-category-icon {
+                width: 140px;
+                display: block;
+                margin: 10px auto;
+            }
+
+            .sub-category-name {
+                color: #999999;
+                display: block;
+                font-size: 30px;
+                text-align: center;
+            }
+
+            &:hover {
+                box-shadow: 0px 0px 18px 1px #00c7e9;
+                border: solid 1px white;
+                cursor: pointer;
+
+                .sub-category-delete {
+                    img {
+                        width: 23px;
+                        display: inline-block;
+                        float: right;
+                        margin-top: 10px;
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }   
+
+        .no-result-div {
+            padding: 15px;
+            color: #999999;
+        }
+    }
+
+    .modal {
+        .modal-dialog {
+            .modal-content {
+                .modal-header {
+                    background: #141e2f;
+                    color: #04f6a3;
+                    display: block;
+                    width: 100.1%;
+
+                    .close {
+                        right: 0px;
+                        float: right;
+                        margin: 0px;
+                        position: absolute;
+                        top: -4px;
+                        color: white;
+                        font-size: 31px;
+                        cursor: pointer;
+                    }
+
+                    .modal-title {
+                        text-align: center;
+                    }
+                }
+
+                .modal-body {
+
+                    button {
+                        padding: 5px 20px;
+                        margin: 0px 5px;
+                        border: solid 1px #00c7e9;
+                        color: #00c7e9;
+                        background: white;
+                        cursor: pointer;
+                        border-radius: 5px;
+
+                        &:hover {
+                            background: #00c7e9;
+                            color:white;
+                        }
+                    }
+
+                    .rate-list-header {
+                        padding: 10px
+
+                        span {
+                            color: #5f5f5f;
+                            font-weight: 500;
+                        }
+
+                        .rate {
+                            float: right;
+                        }
+                    }
+
+                    .rate-list {
+                        border-top: solid 1px #d0d0d0;
+                        padding: 10px;
+
+                        span {
+                            color: grey;
+                        }
+
+                        .rate {
+                            float: right;
+                        }
+                    }
+
+                    .first-button {
+                        margin: 0px 105px;
+                    }
+                }
+            }
+        }
+    }
+}

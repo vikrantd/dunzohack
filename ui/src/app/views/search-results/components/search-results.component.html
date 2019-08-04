@@ -1,0 +1,15 @@
+<div class="search-results-box">
+    <div class="search-header"><h4>Search Results</h4><span (click)="traverseBack()" class="back-icon"><img src="assets/back.svg"></span></div>
+    <div class="search-results" *ngIf="searchResults?.length != 0">
+        <div class="result-box" *ngFor="let result of searchResults">
+            <span [ngClass]="{'highlight' : searchTerm == result?.name}" class="result-header">{{result.name}}</span>
+            <span [ngClass]="{'highlight' : searchTerm == result?.description}" class="result-description">Description: {{result.description}}</span>
+            <span [ngClass]="{'highlight' : searchTerm == result?.type}" class="result-type">Type: {{result.type}}</span>
+            <span [ngClass]="{'highlight' : searchTerm == result?.parentType}" class="result-parent-type" *ngIf="result?.parentType">Parent-Type: {{result.parentType}}</span>
+            <span [ngClass]="{'highlight' : searchTerm == result?.id}" class="result-id">Id: {{result.id}}</span>
+        </div>
+    </div>
+    <div class="no-result-div" *ngIf="searchResults?.length == 0">
+        <span> No Results Found </span>
+    </div>
+</div>

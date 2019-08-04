@@ -1,0 +1,33 @@
+.landing-view {
+    display: inline-block;
+    height: 84.5%;
+    width: 86.5%;
+    position: absolute;
+    right: 0.7%;
+    background-image: url(assets/dunzo-home-screen.png);
+    top: 90px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    img {
+        height: 100%;
+        float: right;
+        width: 59%;
+    }
+
+    .home-text {
+        font-size: 50px;
+        position: absolute;
+        top: 170px;
+        left: 30px;
+        font-weight: 500;
+        color: #00C08B;
+
+        .text-black {
+            color: #656565;
+        }
+    }
+}

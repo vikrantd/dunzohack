@@ -1,0 +1,8 @@
+<div class="nav-bar-view">
+        <div class="nav-bar-list">
+            <li *ngFor="let option of navBarOptions" (click)="selectNavigation(option)" [ngClass]="{'active': option.routerUrl == routeUrl}">
+                <span class="nav-name">{{option.name}}</span>
+                <span class="nav-icon"><img src="assets/{{option.iconName}}.svg"></span>
+            </li>
+        </div>
+    </div>

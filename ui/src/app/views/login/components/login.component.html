@@ -1,0 +1,42 @@
+<div class="wrapper fadeInDown" *ngIf="!signUpForm">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="assets/dunzo.png" id="icon" alt="Company Icon" />
+      <img src="assets/dunzo-name.jpg" id="icon2" alt="Company Name" />
+    </div>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="model.email" #email="ngModel" id="login" [ngClass]="{ 'has-error': f.submitted && !email.valid }" class="fadeIn second" placeholder="Usermail" required />
+      <span *ngIf="!email.valid && f.submitted" class="error-message">Please enter a valid email address</span>
+      <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" id="password" [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="fadeIn third" placeholder="Password" required />
+      <span *ngIf="!password.valid && f.submitted" class="error-message">Please enter a password</span>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" (click)="signUp(true)">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper fadeInDown" *ngIf="signUpForm">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <img src="assets/dunzo.png" id="icon" alt="Company Icon" />
+        <img src="assets/dunzo-name.jpg" id="icon2" alt="Company Name" />
+      </div>
+      <form name="form" (ngSubmit)="f.form.valid && signUpUser()" #f="ngForm" novalidate>
+        <input type="text" name="username" [(ngModel)]="model.userName" #username="ngModel" id="username" [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="fadeIn second" placeholder="Username" required />
+        <span *ngIf="!username.valid && f.submitted" class="error-message">Please enter a user name</span>
+        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="model.email" #email="ngModel" id="login" [ngClass]="{ 'has-error': f.submitted && !email.valid }" class="fadeIn second" placeholder="Email" required />
+        <span *ngIf="!email.valid && f.submitted" class="error-message">Please enter a valid email address</span>
+        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" id="password" [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="fadeIn third" placeholder="Password" required />
+        <span *ngIf="!password.valid && f.submitted" class="error-message">Please enter a password</span>
+        <input type="password" [(ngModel)]="model.verifyPassword" validateEqual="password" #verifyPassword="ngModel" name="verifyPassword" placeholder="Verify Your Password" required>
+        <span class="error-message" *ngIf="f.submitted && !verifyPassword.valid">Please enter same password</span>
+        <input type="submit" class="fadeIn fourth" value="Sign Up">
+      </form>
+      <div id="formFooter">
+        <a class="underlineHover" (click)="signUp(false)">Cancel</a>
+      </div>
+  
+    </div>
+  </div>
