@@ -8,13 +8,17 @@ import { createTabularItemData, extractBillHeaderData, assignExtractedHeaderDeta
 /** Interface and Initial State */
 export interface IAnalyseViewState {
     imageList: any[];
-    analysedData: any;
+    analysedDataHeader: any;
+    productArray: any[];
+    newStoreId: number;
 }
    
 
 export const DEFAULT_ANALYSEVIEW_STATE = {
     imageList: [],
-    analysedData: {}
+    analysedDataHeader: {},
+    productArray: [],
+    newStoreId: 0
 };
 
 /** Reducer */
@@ -29,6 +33,8 @@ export function analyseView(state: IAnalyseViewState = DEFAULT_ANALYSEVIEW_STATE
         case AnalyseViewActions.IMAGE_ANALYSED:
             return hanldeAnalysedData(state, action);
 
+        case AnalyseViewActions.STORE_SAVED:
+            return handleStoreSaved(state, action);
      
        
         default:
@@ -55,9 +61,15 @@ function hanldeAnalysedData(state: IAnalyseViewState, action: IAction): IAnalyse
     // console.log(action.payload.responses);
     // console.log(action.payload.responses[0].textAnnotations[0].description);
     topTextArray = extractBillHeaderData(action.payload.responses[0].textAnnotations[0].description);
-    assignExtractedHeaderDetails(topTextArray);
+    newState.analysedDataHeader = assignExtractedHeaderDetails(topTextArray);
     // console.log(topTextArray);
-    productArray = createTabularItemData(action.payload.responses[0].textAnnotations);
+    newState.productArray = createTabularItemData(action.payload.responses[0].textAnnotations);
     // console.log(text);
+    return newState;
+}
+
+function handleStoreSaved(state: IAnalyseViewState, action: IAction): IAnalyseViewState {
+    let newState = _.cloneDeep(state);
+    newState.newStoreId = action.payload;
     return newState;
 }

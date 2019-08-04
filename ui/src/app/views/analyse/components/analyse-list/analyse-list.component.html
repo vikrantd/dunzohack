@@ -1,8 +1,58 @@
 <div class="categories-list-view">
-        <div class="categories-header"><h4>Receipts</h4></div>
+        <div class="categories-header"><h4>Receipts</h4><span (click)="addCategory()" class="add-icon"><img src="assets/add.svg"></span></div>
         <div class="categories-list" *ngIf="!loading">
             <li *ngFor="let image of imageList" (click)="selectImage(image)" [ngClass]="{'active': image.storeRecieptId == selectedImage?.storeRecieptId}">
-                <span class="category-name"><img src="{{image.recieptImage}}">{{image.recieptImage}}</span><button (click)="analyseImage(image.recieptImage)">Analyse</button>
+                <span class="category-name"><img src="{{image.recieptImage}}"></span><button (click)="analyseImage(image.recieptImage)">Analyse</button>
+                <div class="analysed-box" *ngIf="showAnalysedBox && image.storeRecieptId == selectedImage?.storeRecieptId">
+                    <div class="analysed-image">
+                            <img src="{{image.recieptImage}}">
+                    </div>
+                    <div class="analysed-result">
+                            <form name="form" (ngSubmit)="f.form.valid && saveData()" #f="ngForm" novalidate>
+                                      <div class="input-field-box">
+                                        <label>Establishment</label>
+                                        <input class="input-field" type="text" name="establishment" placeholder="Establishment" [(ngModel)]="analysedHeader.establishment" #establishment="ngModel"
+                                          required />
+                                        <span class="error-message" *ngIf="f.submitted && !establishment.valid">Establishment is required!</span>
+                                      </div>
+                                      <div class="input-field-box">
+                                        <label>Location</label>
+                                        <input class="input-field" type="text" name="address" placeholder="Location" [(ngModel)]="analysedHeader.address" #address="ngModel" required/>
+                                        <span class="error-message" *ngIf="f.submitted && !address.valid">Location is required!</span>
+                                      </div>
+                                    <div class="input-field-box">
+                                        <label>Contact</label>
+                                        <input class="input-field" type="text" name="contact" placeholder="contact" [(ngModel)]="analysedHeader.contact" #contact="ngModel" required/>
+                                        <span class="error-message" *ngIf="f.submitted && !contact.valid">Contact is required!</span>
+                                    </div>
+                                    <div class="input-field-box">
+                                      <label>Tin</label>
+                                      <input class="" type="text" name="tin" placeholder="Tin" [(ngModel)]="analysedHeader.tin" #tin="ngModel" required/>
+                                      <span class="error-message" *ngIf="f.submitted && !tin.valid">Tin is required!</span>
+                                    </div>
+                                    <div class="product-detail-table">
+                                        <span class="items-header">Items</span><span class="quantity-header">Quantity</span><span class="price-header">Price</span>
+                                    </div>
+                                    <div *ngFor="let product of productArray;let i=index" class="product-data-table">
+                                        <input class="item-box" type="text" name="itemName{i}" placeholder="Item name" [(ngModel)]="product.itemName">
+                                        <input class="quantity-box" type="text" name="quantity{i}" placeholder="Quantity" [(ngModel)]="product.quantity">
+                                        <input class="price-box" type="text" name="price{i}" placeholder="Price" [(ngModel)]="product.price">
+                                    </div>
+                                    <!-- <div class="id-field-box">
+                                      <label>Category Id</label>
+                                      <input class="" type="text" name="categoryId" placeholder="CategoryId" [(ngModel)]="newSubCategory.categoryId" #categoryId="ngModel" disabled/>
+                                    </div>
+                                    <div class="id-field-box">
+                                      <label>Parent Type</label>
+                                      <input class="" type="text" name="parentType" placeholder="Parent Type" [(ngModel)]="newSubCategory.parentType" #parentType="ngModel" disabled/>
+                                    </div> -->
+                                    <div class="button-operations">
+                                        <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+                                        <button type="submit" class="save-button">Save</button>
+                                    </div>
+                                  </form>
+                    </div>
+                </div>
             </li>
         </div>
         <!-- <div class="loader" *ngIf="loading"></div> -->

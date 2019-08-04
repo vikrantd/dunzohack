@@ -34,10 +34,7 @@ export function createTabularItemData(pData) {
             });
             if(sameRowText.length > 1) {
                 sameRowText.sort(function(a, b){
-                    if(b.boundingPoly.vertices[0].y !== a.boundingPoly.vertices[0].y) {
                         return a.boundingPoly.vertices[0].x-b.boundingPoly.vertices[0].x;
-                    }
-                    
                 })
             }
             if(pullFlag) {
@@ -99,7 +96,7 @@ export function createTabularItemData(pData) {
         }
     })
     console.log(finalProductArray);
-    return productArray;
+    return finalProductArray;
 }
 
 export function extractBillHeaderData(pData) {
@@ -151,5 +148,39 @@ export function assignExtractedHeaderDetails(pData) {
             
         }
     });
-    // console.log(finalData);
+    if(finalData.establishment == undefined && pData[0] != "")  {
+        finalData.establishment = pData[0];
+    }
+    return finalData;
+}
+
+export function buildAddStoreData(pData) {
+    return {
+        "storeName": pData.establishment,
+        "storeAddress": pData.address,
+        "gstin": pData.tin,
+        "phoneNumber": pData.contact
+    }
+}
+
+export function buildAddProductData(pData) {
+    // pData.productDetails.forEach(detail => {
+        let productData = {
+            "storeId": pData.id,
+            "guessedName": pData.productDetails.itemName,
+            "correctedName": pData.productDetails.itemName,
+            "perUnitPrice": pData.productDetails.price,
+            "categoryId": 1,
+            "quantityTypeId": 1
+
+        };
+    // })
+    return productData;
+}
+
+export function buildSavedToBeData(pHeaderData, pProductData) {
+    return {
+        storeDetails: pHeaderData,
+        productDetails: pProductData
+    }
 }

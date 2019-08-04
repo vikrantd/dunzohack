@@ -1,7 +1,7 @@
 .categories-list-view {
     width: 86.5%;
     background: #f8f9fa;
-    height: calc(100% - 72px);
+    height: 84.5%;
     right: 0.8%;
     top: 89px;
     border: 1px solid rgba(0, 0, 0, 0.07);
@@ -42,8 +42,9 @@
     }
 
     .categories-list {
-        height: calc(100% - 60px);
-        overflow-y: scroll;
+
+        height: 88%;
+        overflow: auto;
 
         li {
             display: block;
@@ -87,6 +88,98 @@
             .sub-category-view {
                 height: 300px;
                 margin-top: 30px;
+            }
+
+            .analysed-box {
+                height: 500px;
+                padding: 10px;
+
+                .analysed-image {
+                    width: 30%;
+                    height: 490px;
+                    border-right: solid 2px #d6d6d6;
+                    display: inline-block;
+
+                    img {
+                        width: 94%;
+                        height: 96%;
+                        margin-top: 10px;
+                    }
+                }
+
+                .analysed-result {
+                    width: 68%;
+                    height: 490px;
+                    display: inline-block;
+
+                    form {
+
+                        .input-field-box {
+                            color: grey;
+                            margin: 10px 5px;
+
+                            label {
+                                margin-right: 20px;
+                            }
+
+                            input {
+                                border-radius: 5px;
+                                padding: 5px;
+                                border: solid 1px #01c18b;
+                                width: 500px;
+                            }
+                        }
+
+                        .product-detail-table {
+                            background: #01c18b;
+                            color: white;
+
+                            .items-header {
+                                width: 35%;
+                                display: inline-block;
+                                padding: 10px;
+                            }
+
+                            .quantity-header {
+                                width: 30%;
+                                display: inline-block;
+                                padding: 10px;
+                            }
+
+                            .price-header {
+                                width: 35%;
+                                display: inline-block;
+                                padding: 10px;
+                            }
+                        }
+
+                        .product-data-table {
+                            padding: 10px;
+                            border: solid 1px #d6d2d2;
+
+                            .item-box {
+                                border: solid 1px #01c18b;
+                                padding: 5px;
+                                border-radius: 5px;
+                                width: 35%;
+                            }
+
+                            .quantity-box {
+                                border: solid 1px #01c18b;
+                                padding: 5px;
+                                border-radius: 5px;
+                                width: 30%;
+                            }
+
+                            .price-box {
+                                border: solid 1px #01c18b;
+                                padding: 5px;
+                                border-radius: 5px;
+                                width: 33%;
+                            }
+                        }
+                    }
+                }
             }
         }
 

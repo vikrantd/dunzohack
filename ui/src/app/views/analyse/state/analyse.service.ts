@@ -27,6 +27,18 @@ export class AnalyseViewService {
         return this.store.select(selector.getImagelist);
     }
 
+    sGetAnalysedHeader() {
+        return this.store.select(selector.getAnalysedHeader);
+    }
+
+    sGetProductArray() {
+        return this.store.select(selector.getProductArray);
+    }
+
+    sGetNewStoreId() {
+        return this.store.select(selector.getNewStoreId);
+    }
+
     /**
      * Dispatch Actions
      */
@@ -37,6 +49,18 @@ export class AnalyseViewService {
 
     dAnalyzeImage(pUrl) {
         this.store.dispatch(this.actions.analyseImage(pUrl));
+    }
+
+    dSaveToInventory(pData) {
+        this.store.dispatch(this.actions.saveToInventory(pData));
+    }
+
+    dAddProductToInventory(pData) {
+        this.store.dispatch(this.actions.addProductToInventory(pData));
+    }
+
+    dSavedStore(pId) {
+        this.store.dispatch(this.actions.storeSaved(pId));
     }
 }
 

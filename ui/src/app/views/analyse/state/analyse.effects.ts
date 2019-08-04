@@ -18,6 +18,7 @@ import { error } from '../../../core-modules/app-store/state/app-store.effects';
 import { IAction } from '../../../core-modules/app-store/interfaces/IAction';
 import { IAppStoreState } from '../../../core-modules/app-store/state/app-store.reducer';
 import { ApiService, AlertService } from '../../../services';
+import { buildAddStoreData, buildAddProductData } from './analyse.helper';
 
 @Injectable()
 export class AnalyseViewEffects {
@@ -68,23 +69,40 @@ export class AnalyseViewEffects {
         });
 
 
-    // @Effect()
-    // eSaveCategory = this.action$
-    //     .ofType('[CategoryView] SAVE_CATEGORY')
-    //     .switchMap((pAction: IAction) => {
-    //             return this._apiSvc
-    //                     .post('Categories', pAction.payload, true)
-    //                     .switchMap((result: any) => {
-    //                         this._alertService.success("Category Added Succesfully", true);
-    //                         return Observable.concat(
-    //                             Observable.of({type: a.CATEGORY_SAVED, payload: result})
-    //                         );
-    //                     }).catch((e: Error) => {
-    //                         let message: string = e.message == "" ? "Error" : e.message;
-    //                         this._alertService.error(message, true);
-    //                         return error(e)}
-    //                     )
-    //     });
+    @Effect()
+    eSaveToInventory = this.action$
+        .ofType('[Analyse] SAVE_TO_INVENTORY')
+        .switchMap((pAction: IAction) => {
+                return this._apiSvc
+                        .post('stores', JSON.stringify(buildAddStoreData(pAction.payload.storeDetails)), true)
+                        .switchMap((result: any) => {
+                                 return Observable.concat(
+                                    Observable.of({type: a.STORE_SAVED, payload: result.storeId})
+                                );
+                        }).catch((e: Error) => {
+                            let message: string = e.message == "" ? "Error" : e.message;
+                            this._alertService.error(message, true);
+                            return error(e)}
+                        )
+        });
+
+    @Effect()
+    eAddProductToInventory = this.action$
+        .ofType('[Analyse] ADD_PRODUCT_TO_INVENTORY')
+        .switchMap((pAction: IAction) => {
+                return this._apiSvc
+                        .post('products', JSON.stringify(buildAddProductData(pAction.payload)), true)
+                        .switchMap((result: any) => {
+                            this._alertService.error("Added to Inventory Successfully!", true);
+                            return Observable.concat(
+                                Observable.of({type: a.SAVED_TO_INVENTORY, payload: true})
+                            );
+                        }).catch((e: Error) => {
+                            let message: string = e.message == "" ? "Error" : e.message;
+                            this._alertService.error(message, true);
+                            return error(e)}
+                        )
+        });
 
     
   
